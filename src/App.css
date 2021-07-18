@@ -13,6 +13,10 @@ label input {
   padding: 1%;
 }
 
+input:checked + span {
+  text-decoration: line-through;
+}
+
 button {
   cursor: pointer;
   padding: 1%;
