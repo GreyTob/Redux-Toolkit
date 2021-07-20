@@ -1,27 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit"import { action } from "commander"
- from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+// import { action } from  '@reduxjs/toolkit'
 
-const todoSlise = createSlice({
+const todoSlice = createSlice({
   name: 'todos',
   initialState: {
-    todos: []
+    todos: [],
   },
   reducers: {
     addTodo(state, action) {
       console.log(state)
       console.log(action)
-      
+
       state.todos.push({
         id: new Date().toISOString(),
         text: action.payload.text,
         complited: false,
       })
     },
-    toggleTodoComplited() {},
-    removeTodo() {}
-  }
+    toggleTodoComplited(state, action) {},
+    removeTodo(state, action) {},
+  },
 })
 
-export {addTodo, toggleTodoComplited, removeTodo} = todoSlise.action.payload
+export const { addTodo, toggleTodoComplited, removeTodo } = todoSlice.actions
 
-export default todoSlice.reducers
+export default todoSlice.reducer
