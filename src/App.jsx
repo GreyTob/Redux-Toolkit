@@ -1,4 +1,8 @@
 import { useState } from 'react'
+
+import { useDispatch } from 'react-redux'
+import { addTodo } from './store/todoSlise.js'
+
 import InputField from './components/InputField.jsx'
 import TodoList from './components/TodoList.jsx'
 
@@ -7,30 +11,18 @@ import './App.css'
 function App() {
   const [text, setText] = useState('')
 
-  const toggleTodoComplited = (todoId) => {
-    // setTodos(
-    //   todos.map((todo) => {
-    //     if (todo.id !== todoId) return todo
-    //     return {
-    //       ...todo,
-    //       complited: !todo.complited,
-    //     }
-    //   })
-    // )
-  }
+  const dispatch = useDispatch()
 
-  const removeTodo = (todoId) => {
-    // setTodos(todos.filter((todo) => todo.id !== todoId))
+  const addTask = () => {
+    dispatch(addTodo({ text }))
+    setText('')
   }
 
   return (
     <div className="App">
-      <InputField text={text} handlerInput={setText} handlerSubmit={addTodo} />
+      <InputField text={text} handlerInput={setText} handlerSubmit={addTask} />
 
-      <TodoList
-        removeTodo={removeTodo}
-        toggleTodoComplited={toggleTodoComplited}
-      />
+      <TodoList />
     </div>
   )
 }
