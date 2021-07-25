@@ -8,7 +8,7 @@ import TodoList from './components/TodoList.jsx'
 
 import './App.css'
 
-function App() {
+const App: React.FC = () => {
   const [text, setText] = useState('')
 
   const dispatch = useDispatch()
